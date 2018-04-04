@@ -18,6 +18,7 @@ import static ru.ioann.transliterator.enums.Language.*;
 import org.springframework.test.web.servlet.ResultActions;
 import ru.ioann.transliterator.enums.Language;
 
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @SpringBootTest
@@ -42,6 +43,25 @@ public class TransliteratorApplicationTests {
     }
 
     @Test
+    public void testTextValidationError() throws Exception {
+
+        StringBuilder sb = new StringBuilder("s"); //length = 1;
+
+        IntStream.range(1, 501).forEach(i -> sb.append("s")); //length = 501
+
+        this.performPost(Language.RU, sb.toString())
+                .andExpect(status().is(400))
+                .andExpect(
+                        content().json(
+                                "{" +
+                                        "\"status\":\"BAD_REQUEST\",\"" +
+                                        "errorMessage\":\"text:The maximum number of characters in text can not be more than 500\"" +
+                                        "}"
+                        )
+                );
+    }
+
+    @Test
     public void testLanguagesOnCorrectValidation() {
         String crossLanguageMessage = "123";
         Stream.of(RU, UA)
@@ -57,6 +77,15 @@ public class TransliteratorApplicationTests {
                     }
                 });
 
+    }
+
+    @Test
+    public void testTransliteration() throws Exception {
+        this.performPost(RU, "привет")
+                .andExpect(status().is(200))
+                .andExpect(
+                        content().json(String.format(MESSAGE_TEMPLATE, EN, "privet"))
+                );
     }
 
     private ResultActions performPost(Language language, String message) throws Exception {

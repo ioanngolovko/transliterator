@@ -60,8 +60,9 @@ public final class TransliteratorServiceImpl implements TransliteratorService {
                         else {
                             Character nextChar = text.charAt(i + 1);
 
-                            isFullUpperCase = (prevIsUpperCase && Character.getType(nextChar) != Character.LOWERCASE_LETTER)
-                                    || Character.isUpperCase(nextChar);
+                            isFullUpperCase =
+                                    (prevIsUpperCase && Character.getType(nextChar) != Character.LOWERCASE_LETTER)
+                                            || Character.isUpperCase(nextChar);
                         }
 
                         if (isFullUpperCase)

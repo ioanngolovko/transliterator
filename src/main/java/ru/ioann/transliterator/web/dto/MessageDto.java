@@ -1,6 +1,7 @@
 package ru.ioann.transliterator.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.hibernate.validator.constraints.Length;
 import ru.ioann.transliterator.enums.Language;
 import ru.ioann.transliterator.web.validator.LanguageValues;
 
@@ -25,7 +26,7 @@ public final class MessageDto {
 
     // Ограничение выставлено от балды. В любом случае оно должно иметься.
     @NotNull
-    @Max(value = 500, message = "The maximum number of characters in text can not be more than 500")
+    @Length(max = 500, message = "The maximum number of characters in text can not be more than 500")
     public String text;
 
 }
