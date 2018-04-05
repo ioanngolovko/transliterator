@@ -1,6 +1,6 @@
 "# transliterator" 
 
-If You have installed maven and java8 we can just run mvn clean install to build the project
+If You have installed maven and java8 you can just run mvn clean install to build the project
 
 You can run it by different ways:
 1. from IDE
