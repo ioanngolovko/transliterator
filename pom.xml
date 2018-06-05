@@ -127,7 +127,12 @@
                         <artifactId>jgitflow-maven-plugin</artifactId>
                         <version>1.0-m5.1</version>
                         <configuration>
-                            <!-- see goals wiki page for configuration options -->
+                            <username>${git.username}</username>
+                            <password>${git.password}</password>
+                            <flowInitContext>
+                                <masterBranchName>master</masterBranchName>
+                                <developBranchName>dev</developBranchName>
+                            </flowInitContext>
                         </configuration>
                     </plugin>
                 </plugins>
