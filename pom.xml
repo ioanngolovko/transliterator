@@ -130,7 +130,6 @@
                             <username>${git.username}</username>
                             <password>${git.password}</password>
                             <flowInitContext>
-                                <masterBranchName>master</masterBranchName>
                                 <developBranchName>dev</developBranchName>
                             </flowInitContext>
                         </configuration>
