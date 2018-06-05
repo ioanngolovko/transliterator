@@ -132,6 +132,8 @@
                             <flowInitContext>
                                 <developBranchName>dev</developBranchName>
                             </flowInitContext>
+                            <autoVersionSubmodules>true</autoVersionSubmodules>
+                            <squash>true</squash>
                         </configuration>
                     </plugin>
                 </plugins>
