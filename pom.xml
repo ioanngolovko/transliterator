@@ -134,6 +134,11 @@
                             <autoVersionSubmodules>true</autoVersionSubmodules>
                             <squash>true</squash>
                         </configuration>
+                        <!-- Делать надо так.
+                            * mvn -B jgitflow:release-start -Pcurs-bintray
+                            * mvn deploy -Pcurs-bintray
+                            * mvn jgitflow:release-finish -Pcurs-bintray
+                        -->
                     </plugin>
                 </plugins>
             </build>
